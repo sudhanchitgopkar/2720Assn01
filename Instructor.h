@@ -9,7 +9,7 @@ class Instructor {
   Instructor();
   Instructor(std::string username, std::string password, std::string fullName);
 
-  bool login(std::string username, std::string password);
+  bool login(std::string username, std::string password, char **argv);
   string getInstructorName();
 
   bool getStudent(std::string username, Student * students[], int numStudents);

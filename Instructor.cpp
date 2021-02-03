@@ -2,6 +2,8 @@
 #include "Student.h"
 #include <string>
 #include <iostream>
+#include <sstream>
+#include <fstream>
 
 Instructor::Instructor() {
   username = "";
@@ -15,12 +17,27 @@ Instructor::Instructor(std::string username, std::string password, std::string f
   this->fullName = fullName;
 } //constructor
 
-bool Instructor::login(std::string username, std::string password) {
-  if (this->username == username && this->password == password) {
-    return true;
-  } else {
-    return false;
-  } //if
+bool Instructor::login(std::string username, std::string password, char **argv) {
+  ifstream studentFile(argv[1]);
+  string fileReader;
+
+  bool succesfulLogin{false};
+
+  string s;
+
+  while (getline(studentFile, fileReader)) {
+    istringstream tempString{fileReader};
+    while (getline(tempString, s, '\t')) {
+      if (s.compare(username) == 0) {
+        getline(tempString, s, '\t');
+        if (s.compare(password) == 0) {
+          succesfulLogin = true;
+        } //if
+      } //if
+    } //while
+  } //while
+  return succesfulLogin;
+
 } //login
 
 string Instructor::getInstructorName() {
