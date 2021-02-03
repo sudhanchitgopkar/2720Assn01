@@ -22,15 +22,14 @@ int main(int argc, char **argv) {
   //ifstream students(argv[2]);
   int numInstructors{0};
   int numStudents{0};
-  int increment{0};
 
-  while(getline(instructorFile, temp)) {
+  while(getline(instructorFile, fileReader)) {
     //cout << temp << endl;
-    instructorNumber++;
+    numInstructors++;
   }
-  while(getline(studentFile, temp)) {
+  while(getline(studentFile, fileReader)) {
     //cout << temp << endl;
-    studentNumber++;
+    numStudents++;
   }
 
   Instructor instructors [numInstructors];
@@ -39,15 +38,14 @@ int main(int argc, char **argv) {
   for (int i = 0; i < numStudents; i++) {
     string temp [7];
     for (int i = 0; i < 7; i++) {
-      temp[i] = file.get();
+      temp[i] = studentFile.get();
     } //for
-    students[i] = new Student(temp[1],temp[2],temp[3],temp[4],temp[5]
-                              temp[6],temp[7]);
-    students[i].printStats();
+    students[i] = Student();
+    //students[i].printStats();
   } //for
 
-  cout << "InstructorNumber: " << instructorNumber << endl;
-  cout << "StudentNumber: " << studentNumber << endl;
+  cout << "InstructorNumber: " << numInstructors << endl;
+  cout << "StudentNumber: " << numStudents << endl;
   
   cout << "User types," << endl << "\t1 - Instructor" << endl << "\t2 - Student" << endl;
   cout << "Select a login user type or enter 3 to exit:" << endl;
