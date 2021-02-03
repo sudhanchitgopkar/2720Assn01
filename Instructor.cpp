@@ -24,7 +24,7 @@ bool Instructor::login(std::string username, std::string password) {
 } //login
 
 string Instructor::getInstructorName() {
-  return fullName;
+  return this->fullName;
 } //getInstructorName
 
 bool Instructor::getStudent(std::string username, Student * students[], int numStudents) {
