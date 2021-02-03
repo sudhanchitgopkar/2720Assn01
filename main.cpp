@@ -22,6 +22,8 @@ int main(int argc, char **argv) {
   //ifstream students(argv[2]);
   int numInstructors{0};
   int numStudents{0};
+  //Instructor * instructors;
+  Student * students;
 
   while(getline(instructorFile, fileReader)) {
     //cout << temp << endl;
@@ -32,8 +34,8 @@ int main(int argc, char **argv) {
     numStudents++;
   }
 
-  Instructor instructors [numInstructors];
-  Student students [numStudents];
+  //instructors = new Instructor [numInstructors];
+  students = new Student [numStudents];
 
   for (int i = 0; i < numStudents; i++) {
     string temp [7];
