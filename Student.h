@@ -32,7 +32,7 @@ class Student {
   string getUsername();
   string getPassword();
 
-  string printStats();
+  //string printStats();
 };
 
 #endif
