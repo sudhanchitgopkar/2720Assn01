@@ -27,69 +27,129 @@ string Instructor::getInstructorName() {
   return fullName;
 } //getInstructorName
 
-Student Instructor::getStudent(std::string username, Student * students[], int numStudents) {
-  bool flag = false;
+bool Instructor::getStudent(std::string username, Student * students[], int numStudents) {
   for (int i = 0; i < numStudents; i++) {
     if (students[i]->getUsername() == username) {
-      flag = true;
-      Student student {students[i]};
-      std::cout << "Student name: " << students[i]->getStudentName() << std::endl;
+       std::cout << "Student name: " << students[i]->getStudentName() << std::endl;
       std::cout << "\t Project " << students[i]->getProjectGrade() << std::endl;
       std::cout << "\t Quiz " << students[i]->getQuizGrade() << std::endl;
       std::cout << "\t Midterm " << students[i]->getMidtermGrade() << std::endl;
       std::cout << "\t Final " << students[i]->getFinalGrade() << std::endl;
       std::cout << "\t Overall " << students[i]->getOverallGrade() << std::endl;
-      return student;
-      } //if
-    } //for
-    if (flag == false) {
-      std::cout << "Student username is not valid" << std::endl;
-    }
-  } //getStudent
+      return true;
+    } //if
+  } //for
+
+  std::cout << "Student username is not valid" << std::endl;
+  return false;
+} //getStudent
 
 Student Instructor::getMinStudent(int gradeType, Student * students[], int numStudents) {
-  double min = 100;
+  double min {100};
+  Student minStudent{students[0]};
 
   if (gradeType == 1) {
     for (int i = 0; i < numStudents; i++) {
       if (students[i]->getProjectGrade() < min) {
-        min = students[i]->getProjectGrade();
+        minStudent = students[i];
       } //if
     } //for
   } else if (gradeType == 2) {
     for (int i = 0; i < numStudents; i++) {
       if (students[i]->getQuizGrade() < min) {
-        min = students[i]->getQuizGrade();
+        minStudent = students[i];
       } //if
     } //for
   } else if (gradeType == 3) {
     for (int i = 0; i < numStudents; i++) {
       if (students[i]->getMidtermGrade() < min) {
-        min = students[i]->getMidtermGrade();
+        minStudent = students[i];
       } //if
     } //for
   } else if (gradeType == 4) {
     for (int i = 0; i < numStudents; i++) {
       if (students[i]->getFinalGrade() < min) {
-        min = students[i]->getFinalGrade();
+        minStudent = students[i];
       } //if
     } //for
   } else if (gradeType == 5) {
     for (int i = 0; i < numStudents; i++) {
       if (students[i]->getOverallGrade() < min) {
-        min = students[i]->getOverallGrade();
+        minStudent = students[i];
       } //if
     } //for
   } //if
-
-    std::cout << minGrade << endl;
+  return minStudent;
 } //getMinStudent
 
-Student Instructor::getMaxStudent(int gradeType, Student * student[], int numStudents) {
+Student Instructor::getMaxStudent(int gradeType, Student * students[], int numStudents) {
+  double max {0};
+  Student maxStudent{students[0]};
 
-
+  if (gradeType == 1) {
+    for (int i = 0; i < numStudents; i++) {
+      if (students[i]->getProjectGrade() > max) {
+        maxStudent = students[i];
+      } //if
+    } //for
+  } else if (gradeType == 2) {
+    for (int i = 0; i < numStudents; i++) {
+      if (students[i]->getQuizGrade() > max) {
+        maxStudent = students[i];
+      } //if
+    } //for
+  } else if (gradeType == 3) {
+    for (int i = 0; i < numStudents; i++) {
+      if (students[i]->getMidtermGrade() > max) {
+        maxStudent = students[i];
+      } //if
+    } //for
+  } else if (gradeType == 4) {
+    for (int i = 0; i < numStudents; i++) {
+      if (students[i]->getFinalGrade() > max) {
+        maxStudent = students[i];
+      } //if
+    } //for
+  } else if (gradeType == 5) {
+    for (int i = 0; i < numStudents; i++) {
+      if (students[i]->getOverallGrade() > max) {
+        maxStudent = students[i];
+      } //if
+    } //for
+  } //if
+  return maxStudent;
 } //getMaxStudent
 
-double Instructor::getAvg(int gradeType, Student * student[], int numStudents) {
+double Instructor::getAvg(int gradeType, Student * students[], int numStudents) {
+  double avg{0};
+  double sum{0};
 
+  if (gradeType == 1) {
+    for (int i = 0; i < numStudents; i++) {
+      sum += students[i]->getProjectGrade();
+    } //for
+      avg = sum / numStudents;
+  } else if (gradeType == 2) {
+    for (int i = 0; i < numStudents; i++) {
+      sum += students[i]->getQuizGrade();
+    } //for
+      avg = sum / numStudents;
+  } else if (gradeType == 3) {
+    for (int i = 0; i < numStudents; i++) {
+      sum += students[i]->getMidtermGrade();
+    } //for
+      avg = sum / numStudents;
+  } else if (gradeType == 4) {
+    for (int i = 0; i < numStudents; i++) {
+      sum += students[i]->getFinalGrade();
+    } //for
+      avg = sum / numStudents;
+  } else if (gradeType == 5) {
+    for (int i = 0; i < numStudents; i++) {
+      sum += students[i]->getOverallGrade();
+    } //for
+      avg = sum / numStudents;
+  } //if
+
+  return avg;
 } //getAvg

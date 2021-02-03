@@ -12,10 +12,10 @@ class Instructor {
   bool login(std::string username, std::string password);
   string getInstructorName();
 
-  Student getStudent(std::string username, Student * students[], int numStudents);
-  Student getMinStudent(int gradeType, Student * students[]);
-  Student getMaxStudent(int gradeType, Student * students[]);
-  double getAvg(int gradeType, Student * students[]);
+  bool getStudent(std::string username, Student * students[], int numStudents);
+  Student getMinStudent(int gradeType, Student * students[], int numStudents);
+  Student getMaxStudent(int gradeType, Student * students[], int numStudents);
+  double getAvg(int gradeType, Student * students[], int numStudents);
 
  private:
   std::string fullName;
