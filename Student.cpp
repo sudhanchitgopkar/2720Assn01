@@ -14,6 +14,17 @@ Student::Student() {
   
 }
 
+Student::Student(Student * student) {
+  this->fullName = student->fullName;
+  this->username = student->username;
+  this->password = student->password;
+  
+  this->projectGrade = student->projectGrade;
+  this->quizGrade = student->quizGrade;
+  this->midtermGrade = student->midtermGrade;
+  this->finalGrade = student->finalGrade;
+}
+
 Student::Student(string name, string username, string password, int projectGrade, int quizGrade, int midtermGrade, int finalGrade) {
   fullName = name;
   this->username = username;

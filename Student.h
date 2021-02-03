@@ -19,6 +19,7 @@ class Student {
  public:
 
   Student();
+  Student(Student * student);
   Student(string name, string username, string password, int projectGrade, int quizGrade, int midtermGrade, int finalGrade);
   
   bool login(string username, string password);
