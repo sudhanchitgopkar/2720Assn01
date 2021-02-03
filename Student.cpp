@@ -61,19 +61,19 @@ bool Student::login(string username, string password, char **argv) {
   bool succesfulLogin{false};
 
   string s;
-  
+
   while (getline(studentFile, fileReader)) {
     istringstream tempString{fileReader};
     while (getline(tempString, s, '\t')) {
       if (s.compare(username) == 0) {
-	getline(tempString, s, '\t');
-	if (s.compare(password) == 0) {
-	  succesfulLogin == true;
-	}
-      }
-    }
-  }
-  return succesfulLogin; 
+        getline(tempString, s, '\t');
+        if (s.compare(password) == 0) {
+          succesfulLogin = true;
+        } //if
+      } //if
+    } //while
+  } //while
+  return succesfulLogin;
 }
 
 string Student::getStudentName() {
