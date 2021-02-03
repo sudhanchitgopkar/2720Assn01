@@ -2,6 +2,9 @@
 
 #include<iostream>
 #include<fstream>
+#include<stdio.h>
+#include<string.h>
+#include<sstream>
 
 #include "Student.h"
 #include "Instructor.h"
@@ -36,8 +39,31 @@ int main(int argc, char **argv) {
 
   //instructors = new Instructor [numInstructors];
   students = new Student [numStudents];
+  studentFile.clear();
+  studentFile.seekg(0);
 
-  for (int i = 0; i < numStudents; i++) {
+  string studIdentifier[3];
+  int studGrades[4];
+  int i{0};
+  string s;
+  
+  while (getline(studentFile, fileReader)) {
+    istringstream tempString{fileReader};
+    i = 0;
+    while (getline(tempString, s, '\t')) {
+      if (i < 3) {
+	studIdentifier[i] = s;
+      } else {
+	studGrades[i-3] = stoi(s, nullptr, 10);
+      }
+      i++;
+    }
+    
+    //cout << studentFile.get() << endl;
+  }
+
+  
+  /*for (int i = 0; i < numStudents; i++) {
     string temp [7];
     for (int i = 0; i < 7; i++) {
       temp[i] = studentFile.get();
@@ -45,6 +71,7 @@ int main(int argc, char **argv) {
     students[i] = Student();
     //students[i].printStats();
   } //for
+  */
 
   cout << "InstructorNumber: " << numInstructors << endl;
   cout << "StudentNumber: " << numStudents << endl;
