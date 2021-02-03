@@ -17,41 +17,8 @@ int main(int argc, char **argv) {
     cout << "Usage: main [instructors_file] [students_file]" << endl;
     return 1;
   }
-  
-  cout << "User types," << endl << "\t1 - Instructor" << endl << "\t2 - Student" << endl;
-  cout << "Select a login user type or enter 3 to exit:" << endl;
 
-  string input;
-  string inputUsername;
-  string inputPassword;
-  bool incorrectInput = true;
-  cin >> input;
-  while (incorrectInput) {
-    if (input == "1" || input == "2") {
-      incorrectInput = false;
-    } else {
-      cout << "Invalid option. Please enter a valid option" << endl;
-      cin >> input;
-    }
-  }
-
-  
-  cout << "Enter credentials to login, Enter Username: ";
-  cin >> inputUsername;
-  cout << "Enter Password: ";
-  cin >> inputPassword;
-
-  if (input == "1") {
-    Instructor temp{};
-    temp.login(inputUsername,inputPassword, argv);
-  } else if (input == "2") { 
-    Student test{};
-    test.login(inputUsername, inputPassword, argv); 
-  }
-
-  
-
-    /*ifstream instructorFile(argv[1]);
+  ifstream instructorFile(argv[1]);
   ifstream studentFile(argv[2]);
   string fileReader;
   int numInstructors{0};
@@ -59,11 +26,9 @@ int main(int argc, char **argv) {
   Student * students;
 
   while(getline(instructorFile, fileReader)) {
-    //cout << temp << endl;
     numInstructors++;
   }
   while(getline(studentFile, fileReader)) {
-    //cout << temp << endl;
     numStudents++;
   }
 
@@ -93,26 +58,61 @@ int main(int argc, char **argv) {
     students[j] = temp;
     j++;
   }
-
-  for (int i = 0; i < 20; i++) {
-    cout << students[i].getUsername() << endl;
-    cout << students[i].getPassword() << endl;
-    cout << students[i].getStudentName() << endl;
-    cout << students[i].getProjectGrade() << endl;
-    cout << students[i].getQuizGrade() << endl;
-    cout << students[i].getMidtermGrade() << endl;
-    cout << students[i].getFinalGrade() << endl;
-    } */
   
-  /*for (int i = 0; i < numStudents; i++) {
-    string temp [7];
-    for (int i = 0; i < 7; i++) {
-      temp[i] = studentFile.get();
-    } //for
-    students[i] = Student();
-    //students[i].printStats();
-  } //for
-  */
+  
+  cout << "User types," << endl << "\t1 - Instructor" << endl << "\t2 - Student" << endl;
+  cout << "Select a login user type or enter 3 to exit:" << endl;
+
+  string input;
+  string inputUsername;
+  string inputPassword;
+  bool incorrectInput = true;
+  cin >> input;
+  while (incorrectInput) {
+    if (input == "1" || input == "2") {
+      incorrectInput = false;
+    } else {
+      cout << "Invalid option. Please enter a valid option" << endl;
+      cin >> input;
+    }
+  }
+
+  
+  cout << "Enter credentials to login, Enter Username: ";
+  cin >> inputUsername;
+  cout << "Enter Password: ";
+  cin >> inputPassword;
+
+  if (input == "1") {
+    Instructor temp{};
+    temp.login(inputUsername,inputPassword, argv);
+  } else if (input == "2") { 
+    Student test{};
+    if (test.login(inputUsername, inputPassword, argv)) {
+      for (int i = 0; i < 20; i++) {
+	if (students[i].getUsername() == inputUsername) {
+	  /*cout << students[i].getUsername() << endl;
+	  cout << students[i].getPassword() << endl;
+	  cout << students[i].getStudentName() << endl;
+	  cout << students[i].getProjectGrade() << endl;
+	  cout << students[i].getQuizGrade() << endl;
+	  cout << students[i].getMidtermGrade() << endl;
+	  cout << students[i].getFinalGrade() << endl;*/
+	  test = students[i];
+	}
+      }
+      /*cout << test.getUsername() << endl;
+      cout << test.getPassword() << endl;
+      cout << test.getStudentName() << endl;
+      cout << test.getProjectGrade() << endl;
+      cout << test.getQuizGrade() << endl;
+      cout << test.getMidtermGrade() << endl;
+      cout << test.getFinalGrade() << endl;*/
+
+    }
+  }
+
+  
 
   
 }
