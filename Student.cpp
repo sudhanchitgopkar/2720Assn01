@@ -1,4 +1,5 @@
 #include "Student.h"
+#include <iostream>
 
 Student::Student() {
 
@@ -62,4 +63,9 @@ string Student::getUsername() {
 
 string Student::getPassword() {
   return this->password;
+}
+
+string Student::printStats() {
+std::cout << username << password << fullName;
+std::cout << projectGrade << quizGrade << midtermGrade << finalGrade << std::endl;
 }

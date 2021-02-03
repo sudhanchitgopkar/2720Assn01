@@ -31,7 +31,8 @@ class Student {
   double getOverallGrade();
   string getUsername();
   string getPassword();
-  
+
+  string printStats();
 };
 
 #endif
