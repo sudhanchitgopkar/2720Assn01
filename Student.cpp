@@ -3,6 +3,8 @@
 #include <sstream>
 #include <fstream>
 
+using namespace std;
+
 Student::Student() {
 
   fullName = "";
@@ -14,8 +16,7 @@ Student::Student() {
   midtermGrade = 0;
   finalGrade = 0.0;
 
-  file = "";
-}
+ }
 
 Student::Student(string studentFile) {
 
@@ -28,7 +29,6 @@ Student::Student(string studentFile) {
   midtermGrade = 0;
   finalGrade = 0.0;
 
-  file = studentFile;
 }
 
 Student::Student(Student * student) {
@@ -52,11 +52,10 @@ Student::Student(string name, string username, string password, int projectGrade
   this->midtermGrade = midtermGrade;
   this->finalGrade = finalGrade;
 
-  file = studentFile;
 }
 
-bool Student::login(string username, string password) {
-  ifstream studentFile(file);
+bool Student::login(string username, string password, char **argv) {
+  ifstream studentFile(argv[2]);
   string fileReader;
 
   bool succesfulLogin{false};
@@ -118,28 +117,6 @@ void Student::operator=(Student s) {
   this->quizGrade = s.getQuizGrade();
   this->midtermGrade = s.getMidtermGrade();
   this->finalGrade = s.getFinalGrade();
-}
-
-bool Student::readFile(string username, string password) {
-  ifstream studentFile(file);
-  string fileReader;
-
-  bool succesfulLogin{false};
-
-  string s;
-  
-  while (getline(studentFile, fileReader)) {
-    istringstream tempString{fileReader};
-    while (getline(tempString, s, '\t')) {
-      if (s.compare(username) == 0) {
-	getline(tempString, s, '\t');
-	if (s.compare(password) == 0) {
-	  succesfulLogin == true;
-	}
-      }
-    }
-  }
-  return succesfulLogin;
 }
 
 /*

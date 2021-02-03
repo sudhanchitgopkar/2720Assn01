@@ -18,8 +18,8 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  cout << "InstructorNumber: " << numInstructors << endl;
-  cout << "StudentNumber: " << numStudents << endl;
+  //cout << "InstructorNumber: " << numInstructors << endl;
+  //cout << "StudentNumber: " << numStudents << endl;
   
   cout << "User types," << endl << "\t1 - Instructor" << endl << "\t2 - Student" << endl;
   cout << "Select a login user type or enter 3 to exit:" << endl;
