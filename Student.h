@@ -33,6 +33,8 @@ class Student {
   string getUsername();
   string getPassword();
 
+  void operator=(Student s);
+  
   //string printStats();
 };
 

@@ -76,6 +76,17 @@ string Student::getPassword() {
   return this->password;
 }
 
+void Student::operator=(Student s) {
+  this->fullName = s.getStudentName();
+  this->username = s.getUsername();
+  this->password = s.getPassword();
+  
+  this->projectGrade = s.getProjectGrade();
+  this->quizGrade = s.getQuizGrade();
+  this->midtermGrade = s.getMidtermGrade();
+  this->finalGrade = s.getFinalGrade();
+}
+
 /*
 string Student::printStats() {
 std::cout << username << password << fullName;

@@ -21,11 +21,8 @@ int main(int argc, char **argv) {
   ifstream instructorFile(argv[1]);
   ifstream studentFile(argv[2]);
   string fileReader;
-  //ifstream instructors(argv[1]);
-  //ifstream students(argv[2]);
   int numInstructors{0};
   int numStudents{0};
-  //Instructor * instructors;
   Student * students;
 
   while(getline(instructorFile, fileReader)) {
@@ -91,6 +88,7 @@ int main(int argc, char **argv) {
   cout << "Select a login user type or enter 3 to exit:" << endl;
 
   string input;
+  string inputUsername;
   bool incorrectInput = true;
   cin >> input;
   while (incorrectInput) {
@@ -101,4 +99,7 @@ int main(int argc, char **argv) {
       cin >> input;
     }
   }
+
+  cout << "Enter credentials to login, Enter Username: " << endl;
+  cin >> inputUsername;
 }
