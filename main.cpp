@@ -45,6 +45,7 @@ int main(int argc, char **argv) {
   string studIdentifier[3];
   int studGrades[4];
   int i{0};
+  int j{0};
   string s;
   
   while (getline(studentFile, fileReader)) {
@@ -58,10 +59,20 @@ int main(int argc, char **argv) {
       }
       i++;
     }
-    
-    //cout << studentFile.get() << endl;
+    Student temp{studIdentifier[2], studIdentifier[0], studIdentifier[1], studGrades[0], studGrades[1], studGrades[2], studGrades[3]};
+    students[j] = temp;
+    j++;
   }
 
+  for (int i = 0; i < 20; i++) {
+    cout << students[i].getUsername() << endl;
+    cout << students[i].getPassword() << endl;
+    cout << students[i].getStudentName() << endl;
+    cout << students[i].getProjectGrade() << endl;
+    cout << students[i].getQuizGrade() << endl;
+    cout << students[i].getMidtermGrade() << endl;
+    cout << students[i].getFinalGrade() << endl;
+  }
   
   /*for (int i = 0; i < numStudents; i++) {
     string temp [7];
