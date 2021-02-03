@@ -17,15 +17,13 @@ int main(int argc, char **argv) {
     cout << "Usage: main [instructors_file] [students_file]" << endl;
     return 1;
   }
-
-  //cout << "InstructorNumber: " << numInstructors << endl;
-  //cout << "StudentNumber: " << numStudents << endl;
   
   cout << "User types," << endl << "\t1 - Instructor" << endl << "\t2 - Student" << endl;
   cout << "Select a login user type or enter 3 to exit:" << endl;
 
   string input;
   string inputUsername;
+  string inputPassword;
   bool incorrectInput = true;
   cin >> input;
   while (incorrectInput) {
@@ -37,10 +35,23 @@ int main(int argc, char **argv) {
     }
   }
 
-  cout << "Enter credentials to login, Enter Username: " << endl;
-  cin >> inputUsername;
   
-  /*ifstream instructorFile(argv[1]);
+  cout << "Enter credentials to login, Enter Username: ";
+  cin >> inputUsername;
+  cout << "Enter Password: ";
+  cin >> inputPassword;
+
+  if (input == 1) {
+    Instructor temp{};
+    temp.login(inputUsername,inputPassword, argv);
+  } else if (input == 2) { 
+    Student test{};
+    test.login(inputUsername, inputPassword, argv); 
+  }
+
+  
+
+    /*ifstream instructorFile(argv[1]);
   ifstream studentFile(argv[2]);
   string fileReader;
   int numInstructors{0};
