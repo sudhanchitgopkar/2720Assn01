@@ -41,10 +41,10 @@ int main(int argc, char **argv) {
   cout << "Enter Password: ";
   cin >> inputPassword;
 
-  if (input == '1') {
+  if (input == "1") {
     Instructor temp{};
     temp.login(inputUsername,inputPassword, argv);
-  } else if (input == '2') {
+  } else if (input == "2") { 
     Student test{};
     test.login(inputUsername, inputPassword, argv); 
   }
