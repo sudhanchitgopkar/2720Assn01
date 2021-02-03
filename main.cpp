@@ -18,7 +18,29 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  ifstream instructorFile(argv[1]);
+  cout << "InstructorNumber: " << numInstructors << endl;
+  cout << "StudentNumber: " << numStudents << endl;
+  
+  cout << "User types," << endl << "\t1 - Instructor" << endl << "\t2 - Student" << endl;
+  cout << "Select a login user type or enter 3 to exit:" << endl;
+
+  string input;
+  string inputUsername;
+  bool incorrectInput = true;
+  cin >> input;
+  while (incorrectInput) {
+    if (input == "1" || input == "2") {
+      incorrectInput = false;
+    } else {
+      cout << "Invalid option. Please enter a valid option" << endl;
+      cin >> input;
+    }
+  }
+
+  cout << "Enter credentials to login, Enter Username: " << endl;
+  cin >> inputUsername;
+  
+  /*ifstream instructorFile(argv[1]);
   ifstream studentFile(argv[2]);
   string fileReader;
   int numInstructors{0};
@@ -56,7 +78,7 @@ int main(int argc, char **argv) {
       }
       i++;
     }
-    Student temp{studIdentifier[2], studIdentifier[0], studIdentifier[1], studGrades[0], studGrades[1], studGrades[2], studGrades[3]};
+    Student temp{studIdentifier[2], studIdentifier[0], studIdentifier[1], studGrades[0], studGrades[1], studGrades[2], studGrades[3], argv[2]};
     students[j] = temp;
     j++;
   }
@@ -69,7 +91,7 @@ int main(int argc, char **argv) {
     cout << students[i].getQuizGrade() << endl;
     cout << students[i].getMidtermGrade() << endl;
     cout << students[i].getFinalGrade() << endl;
-  }
+    } */
   
   /*for (int i = 0; i < numStudents; i++) {
     string temp [7];
@@ -81,25 +103,5 @@ int main(int argc, char **argv) {
   } //for
   */
 
-  cout << "InstructorNumber: " << numInstructors << endl;
-  cout << "StudentNumber: " << numStudents << endl;
   
-  cout << "User types," << endl << "\t1 - Instructor" << endl << "\t2 - Student" << endl;
-  cout << "Select a login user type or enter 3 to exit:" << endl;
-
-  string input;
-  string inputUsername;
-  bool incorrectInput = true;
-  cin >> input;
-  while (incorrectInput) {
-    if (input == "1" || input == "2") {
-      incorrectInput = false;
-    } else {
-      cout << "Invalid option. Please enter a valid option" << endl;
-      cin >> input;
-    }
-  }
-
-  cout << "Enter credentials to login, Enter Username: " << endl;
-  cin >> inputUsername;
 }

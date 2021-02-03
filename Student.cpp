@@ -1,5 +1,7 @@
 #include "Student.h"
 #include <iostream>
+#include <sstream>
+#include <fstream>
 
 Student::Student() {
 
@@ -11,7 +13,22 @@ Student::Student() {
   quizGrade = 0;
   midtermGrade = 0;
   finalGrade = 0.0;
+
+  file = "";
+}
+
+Student::Student(string studentFile) {
+
+  fullName = "";
+  username = "";
+  password = "";
   
+  projectGrade = 0;
+  quizGrade = 0;
+  midtermGrade = 0;
+  finalGrade = 0.0;
+
+  file = studentFile;
 }
 
 Student::Student(Student * student) {
@@ -25,7 +42,7 @@ Student::Student(Student * student) {
   this->finalGrade = student->finalGrade;
 }
 
-Student::Student(string name, string username, string password, int projectGrade, int quizGrade, int midtermGrade, int finalGrade) {
+Student::Student(string name, string username, string password, int projectGrade, int quizGrade, int midtermGrade, int finalGrade, string studentFile) {
   fullName = name;
   this->username = username;
   this->password = password;
@@ -34,14 +51,30 @@ Student::Student(string name, string username, string password, int projectGrade
   this->quizGrade = quizGrade;
   this->midtermGrade = midtermGrade;
   this->finalGrade = finalGrade;
+
+  file = studentFile;
 }
 
 bool Student::login(string username, string password) {
-  if (this->username == username && this->password == password) {
-    return true;
-  } else {
-    return false;
+  ifstream studentFile(file);
+  string fileReader;
+
+  bool succesfulLogin{false};
+
+  string s;
+  
+  while (getline(studentFile, fileReader)) {
+    istringstream tempString{fileReader};
+    while (getline(tempString, s, '\t')) {
+      if (s.compare(username) == 0) {
+	getline(tempString, s, '\t');
+	if (s.compare(password) == 0) {
+	  succesfulLogin == true;
+	}
+      }
+    }
   }
+  return succesfulLogin; 
 }
 
 string Student::getStudentName() {
@@ -85,6 +118,28 @@ void Student::operator=(Student s) {
   this->quizGrade = s.getQuizGrade();
   this->midtermGrade = s.getMidtermGrade();
   this->finalGrade = s.getFinalGrade();
+}
+
+bool Student::readFile(string username, string password) {
+  ifstream studentFile(file);
+  string fileReader;
+
+  bool succesfulLogin{false};
+
+  string s;
+  
+  while (getline(studentFile, fileReader)) {
+    istringstream tempString{fileReader};
+    while (getline(tempString, s, '\t')) {
+      if (s.compare(username) == 0) {
+	getline(tempString, s, '\t');
+	if (s.compare(password) == 0) {
+	  succesfulLogin == true;
+	}
+      }
+    }
+  }
+  return succesfulLogin;
 }
 
 /*

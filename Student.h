@@ -16,11 +16,14 @@ class Student {
   int midtermGrade;
   int finalGrade;
 
+  static string file;
+  
  public:
 
   Student();
+  Student(string studentFile);
   Student(Student * student);
-  Student(string name, string username, string password, int projectGrade, int quizGrade, int midtermGrade, int finalGrade);
+  Student(string name, string username, string password, int projectGrade, int quizGrade, int midtermGrade, int finalGrade, string studentFile);
   
   bool login(string username, string password);
   string getStudentName();
@@ -34,7 +37,8 @@ class Student {
   string getPassword();
 
   void operator=(Student s);
-  
+
+  bool readFile(string username, string password);
   //string printStats();
 };
 
