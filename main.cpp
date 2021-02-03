@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
 
   string studIdentifier[3];
   int studGrades[4];
-  int i{0};
+  int i {0};
   string s;
   
   while (getline(studentFile, fileReader)) {
