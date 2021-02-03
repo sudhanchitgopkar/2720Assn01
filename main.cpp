@@ -44,12 +44,8 @@ int main(int argc, char **argv) {
 
   string studIdentifier[3];
   int studGrades[4];
-<<<<<<< HEAD
-  int i {0};
-=======
   int i{0};
   int j{0};
->>>>>>> a541c62fd70ead956b28037e7d9e2b5f88d34186
   string s;
   
   while (getline(studentFile, fileReader)) {
@@ -94,4 +90,15 @@ int main(int argc, char **argv) {
   cout << "User types," << endl << "\t1 - Instructor" << endl << "\t2 - Student" << endl;
   cout << "Select a login user type or enter 3 to exit:" << endl;
 
+  string input;
+  bool incorrectInput = true;
+  cin >> input;
+  while (incorrectInput) {
+    if (input == "1" || input == "2") {
+      incorrectInput = false;
+    } else {
+      cout << "Invalid option. Please enter a valid option" << endl;
+      cin >> input;
+    }
+  }
 }
