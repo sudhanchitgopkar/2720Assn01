@@ -16,7 +16,7 @@ Student::Student() {
   midtermGrade = 0;
   finalGrade = 0.0;
 
- }
+} // Student
 
 Student::Student(string studentFile) {
 
