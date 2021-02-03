@@ -18,6 +18,6 @@ class Instructor {
   string fullName;
   string username;
   string password;
-} //Instructor
+}; //Instructor
 
 #endif

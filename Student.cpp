@@ -1,4 +1,4 @@
-#include Student.h
+#include "Student.h"
 
 Student::Student() {
 
@@ -49,7 +49,7 @@ int Student::getMidtermGrade() {
 }
 
 int Student::getFinalGrade() {
-  return this->finalGradel
+  return this->finalGrade;
 }
 
 double Student::getOverallGrade() {
