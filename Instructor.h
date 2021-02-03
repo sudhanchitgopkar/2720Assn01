@@ -4,6 +4,7 @@
 class Instructor {
  public:
   Instructor();
+  Instructor(string username, string password, string fullName);
 
   bool login(string username, string password);
   string getInstructorName();
@@ -18,4 +19,5 @@ class Instructor {
   string username;
   string password;
 } //Instructor
+
 #endif
