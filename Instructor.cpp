@@ -1,4 +1,5 @@
 #include "Instructor.h"
+#include <string.h>
 
 Instructor::Instructor() {
   username = "";
