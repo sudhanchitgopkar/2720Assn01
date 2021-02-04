@@ -156,29 +156,29 @@ int main(int argc, char **argv) {
   } else if (input == "2") {
     Student test{};
     if (test.login(inputUsername, inputPassword, argv)) {
-      for (int i = 0; i < 20; i++) {
+      for (int i = 0; i < numStudents; i++) {
 	if (students[i].getUsername() == inputUsername) {
-    cout << students[i].getUsername() << endl;
-	  cout << students[i].getPassword() << endl;
-	  cout << students[i].getStudentName() << endl;
-	  cout << students[i].getProjectGrade() << endl;
-	  cout << students[i].getQuizGrade() << endl;
-	  cout << students[i].getMidtermGrade() << endl;
-	  cout << students[i].getFinalGrade() << endl;
 	  test = students[i];
-  }
-}
-/*cout << test.getUsername() << endl;
-  cout << test.getPassword() << endl;
-      cout << test.getStudentName() << endl;
-      cout << test.getProjectGrade() << endl;
-      cout << test.getQuizGrade() << endl;
-      cout << test.getMidtermGrade() << endl;
-      cout << test.getFinalGrade() << endl;*/
-
+	}
+      }
+      string gradeInput;
+      cout << "You are now logged in as student " << test.getStudentName() << endl;
+      cout << "Do you want to view grades (y/n)?";
+      cin >> gradeInput;
+      if(gradeInput == "y") {
+	std::cout << "Student name: " << test.getStudentName() << std::endl;
+	std::cout << "\t Project " <<test.getProjectGrade() << std::endl;
+	std::cout << "\t Quiz " << test.getQuizGrade() << std::endl;
+	std::cout << "\t Midterm " << test.getMidtermGrade() << std::endl;
+	std::cout << "\t Final " << test.getFinalGrade() << std::endl;
+	std::cout << "\t Overall " << test.getOverallGrade() << std::endl;
+      } else {
+	
+      }
+    } else {
+      cout << "Login as student failed" << endl;
     }
   }
-  
 } //main
 
 void getCredentials() {
