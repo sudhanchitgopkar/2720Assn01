@@ -21,7 +21,15 @@ int main(int argc, char **argv) {
 
   // open up file streams for both argument types
   ifstream instructorFile(argv[1]);
-  ifstream studentFile(argv[2]);
+  if (!(instructorFile.is_open())){ // check if instructor file cannot be opened
+    cout << "Error: cannot parse instructors information from file" << argv[1] << endl;
+    return 1;
+  } // if
+  ifstream studentFile(argv[2]); 
+  if (!(studentFile.is_open())) { // check if student file cannot be opened
+    cout << "Error: cannot parse students information from file" << argv[2] << endl;
+    return 1;
+  } // if
   string fileReader;
   int numInstructors{0};
   int numStudents{0};
@@ -105,6 +113,8 @@ int main(int argc, char **argv) {
       if (input == "1" || input == "2") {
 	incorrectInput = false; // if input is correct do not repeat the loop
       } else if (input == "3") { // if input is correct but 3
+	delete [] students;
+	delete [] instructors;
 	exit(1); // exit
       } else { //if input is incorrect
 	cout << "Invalid option. Please enter a valid option." << endl;
