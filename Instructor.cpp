@@ -79,11 +79,11 @@ bool Instructor::getStudent(std::string username, Student students[], int numStu
       //prints student information
       std::cout << endl;
       std::cout << "Student name: " << students[i].getStudentName() << std::endl;
-      std::cout << "\t Project " << students[i].getProjectGrade() << std::endl;
-      std::cout << "\t Quiz " << students[i].getQuizGrade() << std::endl;
-      std::cout << "\t Midterm " << students[i].getMidtermGrade() << std::endl;
-      std::cout << "\t Final " << students[i].getFinalGrade() << std::endl;
-      std::cout << "\t Overall " << students[i].getOverallGrade() << std::endl;
+      std::cout << "\t Project " << students[i].getProjectGrade() << "%" << std::endl;
+      std::cout << "\t Quiz " << students[i].getQuizGrade() << "%" << std::endl;
+      std::cout << "\t Midterm " << students[i].getMidtermGrade() << "%" << std::endl;
+      std::cout << "\t Final " << students[i].getFinalGrade() << "%" << std::endl;
+      std::cout << "\t Overall " << students[i].getOverallGrade() << "%" << std::endl;
       return true;
     } //if
   } //for
