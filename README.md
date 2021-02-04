@@ -1,18 +1,39 @@
-Creators:
-	Sudhan Chitgopkar
-	sudhanchitgopkar@uga.edu
-	811988826
-	Contribution: Most of Instructor.h/.cpp and half of main.cpp
+# Creators
+## Sudhan Chitgopkar
+Email: sudhanchitgopkar@uga.edu
+ID: 811988826
+Contribution: Sudhan completed
+ - most of the Instructor implementation (Instructor.h, Instructor.cpp)
+ - approximately half of the main method (main.cpp)
+ - this README file
+## Kewal Kalsi
+Email: ksk44796@uga.edu
+ID: 811242435
+Contribution: Kewal completed
+ - most of Student implementation (Student.h, Student.cpp)
+ - approximately half of the main method (main.cpp)
+ - the entirety of the Makefile
 
-	Kewal Kalsi
-	ksk44796@uga.edu
-	811242435
-	Contribution: Most of Student.h/.cpp, half of main.cpp, makefile
+# Usage
+## Compilation
+To compile, run:
+```
+make
+```
+To clean compiled files (including .o and executable files), run:
 
-How to Run:
-In order to run the program, you will have to type:
-   make
-After that, you may type:
-   ./main [instructorfile] [studentfile]
+``` 
+make clean
+```
+## Running
+In order to run the program, be sure that you have properly compiled the program.
+following this, type:
+``` 
+./main [instructorFile] [studentFile] 
+```
+with instructorFile and studentFile replaced by the appropriate .txt files.
 In our case, this would look like:
-   ./main instructors.txt students.txt
+``` 
+./main instructors.txt students.txt
+```
+
