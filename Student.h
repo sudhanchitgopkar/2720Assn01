@@ -7,10 +7,13 @@ using namespace std;
 class Student {
 
  private:
+  // declare all the member variables that pertain to a Student class
+  // the identification variables
   string fullName;
   string username;
   string password;
-  
+
+  // the grade member variables
   int projectGrade;
   int quizGrade;
   int midtermGrade;
@@ -19,10 +22,13 @@ class Student {
   
  public:
 
+  //Constructors
   Student();
-  Student(string studentFile);
+  // Copy Constructor
   Student(Student * student);
+  // Constructor with every parameter
   Student(string name, string username, string password, int projectGrade, int quizGrade, int midtermGrade, int finalGrade, string studentFile);
+
   
   bool login(string username, string password, char **argv);
   string getStudentName();
@@ -35,6 +41,7 @@ class Student {
   string getUsername();
   string getPassword();
 
+  // assignment operator for greater functionality
   void operator=(Student s);
   //string printStats();
 };
