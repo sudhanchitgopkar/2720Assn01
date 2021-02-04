@@ -24,6 +24,7 @@ int main(int argc, char **argv) {
   int numInstructors{0};
   int numStudents{0};
   Student * students;
+  Instructor * instructors;
 
   while(getline(instructorFile, fileReader)) {
     numInstructors++;
@@ -37,6 +38,11 @@ int main(int argc, char **argv) {
   studentFile.clear();
   studentFile.seekg(0);
 
+  instructors = new Instructor [numInstructors];
+  instructorFile.clear();
+  instructorFile.seekg(0);
+
+  string instIdentifier[3];
   string studIdentifier[3];
   int studGrades[4];
   int i{0};
@@ -69,28 +75,84 @@ int main(int argc, char **argv) {
     cout << "\t Enter Password: ";
     cin >> inputPassword;
 
-  while (getline(studentFile, fileReader)) {
-    istringstream tempString{fileReader};
-    i = 0;
-    while (getline(tempString, s, '\t')) {
-      if (i < 3) {
-        studIdentifier[i] = s;
-      } else {
-        studGrades[i-3] = stoi(s, nullptr, 10);
-      } //if
-      i++;
-    }
+    while (getline(studentFile, fileReader)) {
+      istringstream tempString{fileReader};
+      i = 0;
+      while (getline(tempString, s, '\t')) {
+        if (i < 3) {
+          studIdentifier[i] = s;
+        } else {
+          studGrades[i-3] = stoi(s, nullptr, 10);
+        } //if
+        i++;
+      }
 
-    Student temp{studIdentifier[2], studIdentifier[0], studIdentifier[1], studGrades[0], studGrades[1], studGrades[2], studGrades[3], argv[2]};
-    students[j] = temp;
-    j++;
-  }
-  
+      Student temp{studIdentifier[2], studIdentifier[0], studIdentifier[1], studGrades[0], studGrades[1], studGrades[2], studGrades[3], argv[2]};
+      students[j] = temp;
+      j++;
+    } //while
+
+    j=0;
+    while (getline(instructorFile, fileReader)) {
+      istringstream tempString{fileReader};
+      i = 0;
+      while (getline(tempString, s, '\t')) {
+        instIdentifier[i] = s;
+        i++;
+      } //while
+
+      Instructor temp{instIdentifier[0],instIdentifier[1],instIdentifier[2]};
+      instructors[j] = temp;
+      j++;
+    } //while
 
 
   if (input == "1") {
+    for (int i = 0; i < numInstructors; i++) {
+      } //for
     Instructor temp{};
-    temp.login(inputUsername,inputPassword,argv);
+    if(temp.login(inputUsername,inputPassword,argv)) {
+      for (int i = 0; i < numInstructors; i++) {
+          if (inputUsername == instructors[i].getUsername()) {
+          temp = instructors[i];
+        } //if
+      } //for
+
+      cout << "\n You are now logged in as instructor " << temp.getInstructorName() << endl;
+      cout << "\n Query options, \n\t 1 - view grades of a student \n\t 2 - view stats" << endl;
+      cout << "Enter option number: ";
+      cin >> input;
+
+      bool invalidInput{true};
+      if (input == "1" || input == "2") {
+        invalidInput = false;
+      } //if
+
+      while (invalidInput) {
+        cout << "Invalid option. Please enter a valid option." << endl;
+        cin >> input;
+      } //while
+
+      if (input == "1") {
+        cout << "Enter student username to view grades: ";
+        string studentName;
+        cin >> studentName;
+        if (temp.getStudent(studentName,students,numStudents)) {
+
+        } else {
+          //cout << "Student username is not valid" << endl;
+        } //if
+
+      } else if (input == "2") {
+
+      } //if
+
+    } else {
+      cout << "Login as instructor failed." << endl;
+    } //if
+
+
+
   } else if (input == "2") {
     Student test{};
     if (test.login(inputUsername, inputPassword, argv)) {
@@ -117,8 +179,8 @@ int main(int argc, char **argv) {
     }
   }
   
-}
+} //main
 
-  void getCredentials() {
+void getCredentials() {
 
-  } //getCredentials
+} //getCredentials

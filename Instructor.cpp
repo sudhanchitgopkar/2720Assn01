@@ -17,15 +17,21 @@ Instructor::Instructor(std::string username, std::string password, std::string f
   this->fullName = fullName;
 } //constructor
 
+Instructor::Instructor(Instructor * instructor) {
+  this->username = instructor->username;
+  this->password = instructor->password;
+  this->fullName = instructor->fullName;
+} //constructor
+
 bool Instructor::login(std::string username, std::string password, char **argv) {
-  ifstream studentFile(argv[1]);
+  ifstream instructorFile(argv[1]);
   string fileReader;
 
   bool succesfulLogin{false};
 
   string s;
 
-  while (getline(studentFile, fileReader)) {
+  while (getline(instructorFile, fileReader)) {
     istringstream tempString{fileReader};
     while (getline(tempString, s, '\t')) {
       if (s.compare(username) == 0) {
@@ -37,22 +43,30 @@ bool Instructor::login(std::string username, std::string password, char **argv) 
     } //while
   } //while
   return succesfulLogin;
-
 } //login
 
 string Instructor::getInstructorName() {
   return this->fullName;
 } //getInstructorName
 
-bool Instructor::getStudent(std::string username, Student * students[], int numStudents) {
+string Instructor::getUsername() {
+  return this->username;
+} //getUserName
+
+string Instructor::getPassword() {
+  return this->password;
+} //getPassword
+
+bool Instructor::getStudent(std::string username, Student students[], int numStudents) {
   for (int i = 0; i < numStudents; i++) {
-    if (students[i]->getUsername() == username) {
-       std::cout << "Student name: " << students[i]->getStudentName() << std::endl;
-      std::cout << "\t Project " << students[i]->getProjectGrade() << std::endl;
-      std::cout << "\t Quiz " << students[i]->getQuizGrade() << std::endl;
-      std::cout << "\t Midterm " << students[i]->getMidtermGrade() << std::endl;
-      std::cout << "\t Final " << students[i]->getFinalGrade() << std::endl;
-      std::cout << "\t Overall " << students[i]->getOverallGrade() << std::endl;
+    if (students[i].getUsername() == username) {
+      std::cout << endl;
+      std::cout << "Student name: " << students[i].getStudentName() << std::endl;
+      std::cout << "\t Project " << students[i].getProjectGrade() << std::endl;
+      std::cout << "\t Quiz " << students[i].getQuizGrade() << std::endl;
+      std::cout << "\t Midterm " << students[i].getMidtermGrade() << std::endl;
+      std::cout << "\t Final " << students[i].getFinalGrade() << std::endl;
+      std::cout << "\t Overall " << students[i].getOverallGrade() << std::endl;
       return true;
     } //if
   } //for
@@ -170,3 +184,9 @@ double Instructor::getAvg(int gradeType, Student * students[], int numStudents) 
 
   return avg;
 } //getAvg
+
+void Instructor::operator=(Instructor i) {
+  this->fullName = i.getInstructorName();
+  this->username = i.getUsername();
+  this->password = i.getPassword();
+} //copy
