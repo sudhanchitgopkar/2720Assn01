@@ -124,13 +124,13 @@ int main(int argc, char **argv) {
       cin >> input;
 
       bool invalidInput{true};
-      if (input == "1" || input == "2") {
-        invalidInput = false;
-      } //if
-
       while (invalidInput) {
-        cout << "Invalid option. Please enter a valid option." << endl;
-        cin >> input;
+	if (input == "1" || input == "2") {
+	  invalidInput = false;
+	} else {
+	  cout << "Invalid option. Please enter a valid option." << endl;
+	  cin >> input;
+	}
       } //while
 
       if (input == "1") {
