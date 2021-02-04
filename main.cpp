@@ -250,11 +250,11 @@ int main(int argc, char **argv) {
 	cin >> gradeInput;
 	if(gradeInput == "y") { // if student wants grades print grades
 	  std::cout << "Student name: " << test.getStudentName() << std::endl;
-	  std::cout << "\t Project " <<test.getProjectGrade() << std::endl;
-	  std::cout << "\t Quiz " << test.getQuizGrade() << std::endl;
-	  std::cout << "\t Midterm " << test.getMidtermGrade() << std::endl;
-	  std::cout << "\t Final " << test.getFinalGrade() << std::endl;
-	  std::cout << "\t Overall " << test.getOverallGrade() << std::endl;
+	  std::cout << "\t Project " <<test.getProjectGrade() << "%" << std::endl;
+	  std::cout << "\t Quiz \t " << test.getQuizGrade() << "%" << std::endl;
+	  std::cout << "\t Midterm " << test.getMidtermGrade() << "%" << std::endl;
+	  std::cout << "\t Final \t " << test.getFinalGrade() << "%" << std::endl;
+	  std::cout << "\t Overall " << test.getOverallGrade() << "%" <<std::endl;
 	} else { // otherwise reset loop
 	  continue;
 	} // if
