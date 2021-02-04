@@ -144,7 +144,57 @@ int main(int argc, char **argv) {
         } //if
 
       } else if (input == "2") {
+        cout << endl;
+        cout << "Grade types," << endl;
+        cout << "\t 1 - Project grade \n\t 2 - Quiz grade";
+        cout << "\n\t 3 - Midterm grade \n\t 4 - Final grade \n\t 5 - Overall grade" << endl;
+        cout << "Select a grade type to view stats: ";
+        cin >> input;
 
+        invalidInput = true;
+        if (input == "1" || input == "2" || input == "3" || input == "4" || input == "5") {
+          invalidInput = false;
+        } //if
+        while (invalidInput) {
+          cout << "Invalid option. Please enter a valid option.";
+          cout << endl;
+          cout << "Grade types," << endl;
+          cout << "\t 1 - Project grade \n\t 2 - Quiz grade";
+          cout << "\n\t 3 - Midterm grade \n\t 4 - Final grade \n\t 5 - Overall grade" << endl;
+          cout << "Select a grade type to view stats: ";
+          cin >> input;
+        } //while
+        if (input == "1") {
+          cout << endl;
+          cout << "Project grade stats," << endl;
+          cout << temp.getMinStudent(stoi (input,nullptr,10),students,numStudents);
+          cout << temp.getMaxStudent(stoi (input,nullptr,10),students,numStudents);
+          cout << temp.getAvg(stoi (input,nullptr,10),students,numStudents);
+        } else if (input == "2") {
+          cout << endl;
+          cout << "Quiz grade stats," << endl;
+          cout << temp.getMinStudent(stoi (input,nullptr,10),students,numStudents);
+          cout << temp.getMaxStudent(stoi (input,nullptr,10),students,numStudents);
+          cout << temp.getAvg(stoi (input,nullptr,10),students,numStudents);
+        } else if (input == "3") {
+          cout << endl;
+          cout << "Midterm grade stats," << endl;
+          cout << temp.getMinStudent(stoi (input,nullptr,10),students,numStudents);
+          cout << temp.getMaxStudent(stoi (input,nullptr,10),students,numStudents);
+          cout << temp.getAvg(stoi (input,nullptr,10),students,numStudents);
+        } else if (input == "4") {
+          cout << endl;
+          cout << "Final grade stats," << endl;
+          cout << temp.getMinStudent(stoi (input,nullptr,10),students,numStudents);
+          cout << temp.getMaxStudent(stoi (input,nullptr,10),students,numStudents);
+          cout << temp.getAvg(stoi (input,nullptr,10),students,numStudents);
+        } else if (input == "5") {
+          cout << endl;
+          cout << "Overall grade stats," << endl;
+          cout << temp.getMinStudent(stoi (input,nullptr,10),students,numStudents);
+          cout << temp.getMaxStudent(stoi (input,nullptr,10),students,numStudents);
+          cout << temp.getAvg(stoi (input,nullptr,10),students,numStudents);
+        }
       } //if
 
     } else {

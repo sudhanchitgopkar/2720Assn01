@@ -16,9 +16,9 @@ class Instructor {
   string getPassword();
 
   bool getStudent(std::string username, Student students[], int numStudents);
-  Student getMinStudent(int gradeType, Student * students[], int numStudents);
-  Student getMaxStudent(int gradeType, Student * students[], int numStudents);
-  double getAvg(int gradeType, Student * students[], int numStudents);
+  string getMinStudent(int gradeType, Student students[], int numStudents);
+  string getMaxStudent(int gradeType, Student students[], int numStudents);
+  string getAvg(int gradeType, Student students[], int numStudents);
 
   void operator=(Instructor i);
 
